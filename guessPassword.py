@@ -1,5 +1,5 @@
 import random
-
+import datetime
 # Genes
 genSet = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!."
 target = "Hello World!"
@@ -26,3 +26,13 @@ def mutate(parent: str):
     newGene, alternate = random.sample(genSet, 2)
     childGenes[index] = alternate if newGene == childGenes[index] else newGene
     return ''.join(childGenes)
+
+#display
+def display(guess):
+    time_difference=datetime.datetime.now()-startTime
+    fitness=get_fitness(guess)
+    print("{0}\t{1}\t{3}".format(guess,fitness,time_difference))
+
+
+
+startTime=datetime.datetime.now()
