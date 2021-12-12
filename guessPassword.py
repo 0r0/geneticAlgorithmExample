@@ -35,4 +35,11 @@ def display(guess):
 
 
 
+
+
+#Main
+random.seed()
 startTime=datetime.datetime.now()
+bestParent=generate_parent(len(target))
+bestFitness=get_fitness(bestParent)
+display(bestParent)
