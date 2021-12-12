@@ -1,5 +1,6 @@
-import random
 import datetime
+import random
+
 # Genes
 genSet = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!."
 target = "Hello World!"
@@ -27,19 +28,29 @@ def mutate(parent: str):
     childGenes[index] = alternate if newGene == childGenes[index] else newGene
     return ''.join(childGenes)
 
-#display
+
+# display
 def display(guess):
-    time_difference=datetime.datetime.now()-startTime
-    fitness=get_fitness(guess)
-    print("{0}\t{1}\t{3}".format(guess,fitness,time_difference))
+    time_difference = datetime.datetime.now() - startTime
+    fitness = get_fitness(guess)
+    print("{0}\t{1}\t{3}".format(guess, fitness, time_difference))
 
 
-
-
-
-#Main
+# Main
 random.seed()
-startTime=datetime.datetime.now()
-bestParent=generate_parent(len(target))
-bestFitness=get_fitness(bestParent)
+startTime = datetime.datetime.now()
+bestParent = generate_parent(len(target))
+bestFitness = get_fitness(bestParent)
 display(bestParent)
+
+# heart
+while True:
+    child = mutate(bestParent)
+    childFitness = get_fitness(child)
+    if bestFitness >= childFitness:
+        continue
+    display(child)
+    if childFitness >= len(bestParent):
+        break
+    bestFitness = childFitness
+    bestParent = child
