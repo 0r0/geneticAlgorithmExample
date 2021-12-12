@@ -11,6 +11,9 @@ def generate_parent(length):
         genes.extend(random.sample(genSet,sampleSize))
         return ''.join(genes)
 
+ #fitness
+def get_fitness(guess:str):
+    return sum(1 for expected,actual in zip(guess,target) if expected==actual)
 
 
 
