@@ -33,7 +33,7 @@ def mutate(parent: str):
 def display(guess):
     time_difference = datetime.datetime.now() - startTime
     fitness = get_fitness(guess)
-    print("{0}\t{1}\t{3}".format(guess, fitness, time_difference))
+    print("{0}\t{1}\t{2}".format(guess, fitness, time_difference))
 
 
 # Main
